@@ -1,0 +1,49 @@
+:root {
+  --white: #ffffff;
+}
+img {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  filter: blur(50px);
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+#startSong {
+  position: fixed;
+  z-index: 1;
+  color: #000;
+  mix-blend-mode: screen;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  padding: 43px 20px;
+  border: 0;
+  background: var(--white);
+  font-weight: bold;
+  border-radius: 50%;
+  font-size: 21px;
+  box-shadow: 0 0 0 0px #000,
+    0 0 0 0px var(--white),
+    0 0 0 5px #000,
+    0 0 0 10px var(--white);
+  cursor: pointer;
+  transition: 0.33s;
+  text-transform: uppercase;
+}
+
+#startSong:hover {
+  box-shadow: 0 0 0 5px #000,
+    0 0 0 10px var(--white),
+    0 0 0 15px #000,
+    0 0 0 20px var(--white);
+}
