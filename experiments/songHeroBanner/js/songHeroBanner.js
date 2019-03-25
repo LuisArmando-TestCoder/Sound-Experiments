@@ -99,7 +99,7 @@
   let audioFlag = false;
   let songContext = 0;
   let audio = new Audio();
-  audio.src = `calm0${quicker().makeIntegerRandom(0, 2)}.mp3`;
+  audio.src = `calm0${quicker().makeIntegerRandom(0, 1)}.mp3`;
   // audio.src = 'calm02.mp3';
   
   repeat(nodesAmount, (i) => {
