@@ -27,7 +27,7 @@
     });
   }
   function appendCanvas(parent) {
-    const cnv = document.createElement("canvas");
+    const cnv = document.createElement('canvas');
     quicker().canvasManageSize(cnv);
     parent.appendChild(cnv);
     return cnv;
@@ -81,7 +81,7 @@
 
     ctx.beginPath();
     ctx.stroke();
-    ctx.strokeStyle = "#ffffbf";
+    ctx.strokeStyle = '#ffffbf';
     requestAnimationFrame(animate);
   }
   function repeat(times, func) {
@@ -100,18 +100,19 @@
       number: number
     };
   }
-  const c = appendCanvas(document.getElementById("starsCnvParent"));
-  const ctx = c.getContext("2d");
+  const c = appendCanvas(document.getElementById('starsCnvParent'));
+  const ctx = c.getContext('2d');
   const circles = [];
   const audioBars = [];
   const nodesAmount = 89,
     barsAmount = 21;
-  const startSongBtn = document.getElementById("startSong");
+  const startSongBtn = document.getElementById('startSong');
 
   let audioFlag = false;
   let songContext = 0;
   let audio = new Audio();
-  audio.src = "calm00.mp3";
+  audio.crossOrigin = 'anonymous';
+  audio.src = 'calm00.mp3';
 
   repeat(nodesAmount, i => {
     let size = quicker().makeFloatingRandom(0.1, 30); // 30 for calmness
@@ -139,22 +140,36 @@
       y: c.height / 2,
       width: _size,
       height: songContext,
-      color: "rgb(255, 255, 255)"
+      color: 'rgb(255, 255, 255)'
     });
   });
 
   // startSongBtn.style.setProperty('transform', 'scale(0)');
   // startSongBtn.style.setProperty('transform', 'scale(1)');
-  startSongBtn.addEventListener("click", () => {
+  startSongBtn.addEventListener('click', () => {
     if (!songContext) songContext = quicker().analyseAudio(audio);
     if (!audioFlag) {
       audio.play();
-      startSongBtn.style.setProperty("transform", "scale(0.25)");
-      startSongBtn.style.setProperty("border-radius", "0");
+      startSongBtn.innerText = '||';
+      quicker().style([startSongBtn], {
+        'transform': 'translateY(10vh) scale(0.25)',
+        'border-radius': '0',
+        'background': '#000',
+        'color': '#fff',
+        'font-size': '42px',
+        'line-height': '0',
+      });
     } else {
       audio.pause();
-      startSongBtn.style.setProperty("transform", "scale(1)");
-      startSongBtn.style.setProperty("border-radius", "50%");
+      startSongBtn.innerText = 'Start'; 
+      quicker().style([startSongBtn], {
+        'transform': 'translateY(0vh) scale(1)',
+        'border-radius': '50%',
+        'background': '#fff',
+        'color': '#000',
+        'font-size': '21px',
+        'line-height': '1',
+      });
     }
     audioFlag = !audioFlag;
   });
