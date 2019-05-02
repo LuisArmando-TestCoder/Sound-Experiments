@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #0f0f0f;
+}
+
+:root {
+  --red: #fff;
+}
+
+#soundPlayer {
+  transform: scale(0);
+  outline: none;
+  position: fixed;
+  display: block;
+  z-index: 1;
+  padding: 20px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--red);
+  top: calc(50% - 120px / 2);
+  left: calc(50% - 120px / 2);
+  font-family: "Mukta", monospace;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  box-shadow: 0 0 0 0px transparent, 0 0 0 0px transparent,
+    0 0 0 0px transparent, 0 0 0 0px transparent, 0 0 0 5px #000,
+    0 0 0 10px var(--red);
+  mix-blend-mode: difference;
+  transition: 0.3s;
+}
+#soundPlayer:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  box-shadow: 0 0 0 0px transparent, 0 0 0 0px transparent, 0 0 0 5px #000,
+    0 0 0 10px var(--red), 0 0 0 15px #000, 0 0 0 20px var(--red);
+}
+#soundPlayer:active {
+  box-shadow: 0 0 0 5px #000, 0 0 0 10px var(--red), 0 0 0 15px #000,
+    0 0 0 20px var(--red), 0 0 0 25px #000, 0 0 0 30px var(--red);
+}
+
+#gooeyCanvas {
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  background: #eee;
+  filter: blur(5px) contrast(10);
+  box-shadow: 0 0 0 50vh #fff;
+  animation: movie-started 4s linear forwards;
+}
+
+@keyframes movie-started {
+  to {
+    box-shadow: 0 0 0 0vh #fff;
+  }
+}
+.chosenSongLabel {
+  position: fixed;
+  bottom: 0;
+  color: #888;
+  background: #000;
+  left: 0;
+  right: 0;
+  font-size: 10px;
+  margin: auto;
+  box-shadow: 0 0 3vh -1vh #444;
+  text-align: center;
+  min-width: 200px;
+  width: 10%;
+  font-family: "Mukta", monospace;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 0;
+  border-bottom: 2px solid #888;
+  transition: 0.15s;
+  transform: scale(0);
+  mix-blend-mode: difference;
+}
+.chosenSongLabel:hover {
+  cursor: pointer;
+  border-bottom: 2px solid #fff;
+  box-shadow: 0 0 3vh -1vh #888;
+  color: #fff;
+}
+.chosenSongLabel:active {
+  bottom: -2px;
+  border-bottom: 0px solid #333;
+}
+.chosenSongLabel #chosenSong {
+  display: none;
+}
